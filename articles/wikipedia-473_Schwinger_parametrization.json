@@ -1,0 +1,6 @@
+{
+  "id": 473,
+  "title": "Schwinger parametrization",
+  "data": "Schwinger parametrization is a technique for evaluating loop integrals which arise from Feynman diagrams with one or more loops. Using the well-known observation that Julian Schwinger noticed that one may simplify the integral: for Re(n)>0. Another version of Schwinger parametrization is: which is convergent as long as \n\n\n\nϵ\n>\n0\n\n\n{\\displaystyle \\epsilon >0}\n\n and \n\n\n\nA\n∈\n\nR\n\n\n\n{\\displaystyle A\\in \\mathbb {R} }\n\n.[1] It is easy to generalize this identity to n denominators. This applied mathematics–related article is a stub. You can help Wikipedia by expanding it. This quantum mechanics-related article is a stub. You can help Wikipedia by expanding it.",
+  "source_url": "https://en.wikipedia.org/wiki/Schwinger_parametrization"
+}

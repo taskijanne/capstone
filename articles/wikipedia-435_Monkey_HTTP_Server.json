@@ -1,0 +1,6 @@
+{
+  "id": 435,
+  "title": "Monkey HTTP Server",
+  "data": "Monkey HTTP Server is an optimized web server for Linux. It is designed to achieve high performance under high loads by making the most of the Linux kernel in terms of specific system calls and optimization techniques. It is HTTP/1.1 compliant (RFC 2616) and supports common features such as IPv6, TLS, Virtual Hosts, CGI, FastCGI, Directory Listing, and Security Rules. The server is designed as a small core extensible through its plugin interface. The binary size of Monkey is around 100 KB and around 250 KB on runtime depending on the loaded plugins. Monkey can perform well on x86 and x86-64, and ARM architectures running Linux embedded variants. Monkey was started in 2001 as an open source project. It is currently licensed under the Apache License v2.",
+  "source_url": "https://en.wikipedia.org/wiki/Monkey_HTTP_Server"
+}

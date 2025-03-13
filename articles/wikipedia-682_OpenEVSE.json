@@ -1,0 +1,6 @@
+{
+  "id": 682,
+  "title": "OpenEVSE",
+  "data": "OpenEVSE (Electric Vehicle Supply Equipment) is an Arduino-based charging station created by Christopher Howell and Sam C. Lin.[1] The charger is composed of open-source software[2] and hardware which can be made by individuals.[3] The project started in February 2011,[4][1] with an experiment aimed at generating the SAE J1772 pilot signal[5] on an Arduino-compatible ATmega328 8-Bit AVR MCU. Subsequent experiments continued until a prototype J1772-compatible controller was created. As of now, OpenEVSE powers charging stations all over the world.[6] This article about an automotive part or component is a stub. You can help Wikipedia by expanding it.",
+  "source_url": "https://en.wikipedia.org/wiki/OpenEVSE"
+}
