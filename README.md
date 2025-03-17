@@ -1,9 +1,13 @@
 # Prerequisites
 
-1. DOcker and docker compose
-2. Poetry
-    poetry install
-    poetry env activate
+1. Docker and docker compose
 
+# How to run
 
-    uvicorn main:app --host 0.0.0.0 --port 8000
+1. Optional: if you want to use OpenAI (GPT-4o) or Groq (Llama 3.3):
+* Create .env file to ./backend -folder
+* Add OPENAI_APIKEY and/or GROQ_APIKEY variables with correct api keys
+
+2. To run the application go to the root folder and run:
+
+docker compose up

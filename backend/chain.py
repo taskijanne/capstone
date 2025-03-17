@@ -13,8 +13,8 @@ from logger import get_logger
 
 logger = get_logger()
 load_dotenv()
-os.environ["GROQ_API_KEY"] = os.getenv("GROQ_APIKEY")
-os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_APIKEY")
+os.environ["GROQ_API_KEY"] = os.getenv("GROQ_APIKEY", "")
+os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_APIKEY", "")
 
 llama = "llama-3.3-70b-versatile"
 gpt4o = "gpt-4o"
@@ -53,7 +53,8 @@ elasticsearch_runnable = RunnableLambda(lambda query: (
 )(
     query if isinstance(query, str) else query.text().replace("\"", "").replace("\n", " ")
 ))
-                                        
+
+logger.info("Loading T5 model")                                      
 model_name = "t5-small"  
 
 base_model = T5ForConditionalGeneration.from_pretrained(model_name)
