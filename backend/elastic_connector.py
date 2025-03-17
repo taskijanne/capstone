@@ -44,3 +44,4 @@ def search(query: str):
         }
         for hit in results["hits"]["hits"]
     ]
+

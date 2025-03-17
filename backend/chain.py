@@ -54,10 +54,12 @@ elasticsearch_runnable = RunnableLambda(lambda query: (
     query if isinstance(query, str) else query.text().replace("\"", "").replace("\n", " ")
 ))
                                         
-logger.info("Loading T5 model")
-model_name = "./t5-small"
-tokenizer = T5Tokenizer.from_pretrained(model_name)
+model_name = "t5-small"  
+
 base_model = T5ForConditionalGeneration.from_pretrained(model_name)
+tokenizer = T5Tokenizer.from_pretrained(model_name)
+
+
 llm_custom = PeftModel.from_pretrained(base_model, './t5-custom', lora_config=LoraConfig(
     r=8,
     lora_alpha=16,

@@ -8,3 +8,14 @@ services:
     ports:
       - "9200:9200"
       - "9300:9300"
+  backend:
+    build:
+      context: ./backend  # Path to the backend directory where the Dockerfile is located
+      dockerfile: Dockerfile  # Specify the Dockerfile to use (optional if it's named 'Dockerfile')
+    container_name: backend
+    ports:
+      - "8000:8000"  # Expose port 8000 for the FastAPI app
+    depends_on:
+      - elasticsearch  # Ensure that Elasticsearch starts before the backend
+    environment:
+      - ELASTICSEARCH_URL=http://elasticsearch:9200

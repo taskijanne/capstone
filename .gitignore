@@ -47,6 +47,7 @@ utils/
 
 # Environment variables
 .env
+backend/.env
 
 # T5-small model
 t5-small/
