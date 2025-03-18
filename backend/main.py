@@ -4,11 +4,20 @@ from api import router
 import subprocess
 from logger import get_logger
 from upload_to_elastic import check_and_populate_elasticsearch
+from fastapi.middleware.cors import CORSMiddleware
 
 logger = get_logger()
 
 app = FastAPI()
 app.include_router(router)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  
+    allow_credentials=True,
+    allow_methods=["*"],  
+    allow_headers=["*"], 
+)
 
 @app.on_event("startup")
 async def startup_event():
