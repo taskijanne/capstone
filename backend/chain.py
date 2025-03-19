@@ -18,8 +18,9 @@ os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_APIKEY", "")
 
 llama = "llama-3.3-70b-versatile"
 gpt4o = "gpt-4o"
-custom = "custom t5-small"
-AVAILABLE_MODELS = [custom]
+t5_custom = "custom t5-small"
+t5_small = "t5-small"
+AVAILABLE_MODELS = [t5_custom, t5_small]
 
 if os.environ["GROQ_API_KEY"]:
     logger.info("GROQ API Key found")
@@ -59,7 +60,7 @@ model_name = "t5-small"
 
 base_model = T5ForConditionalGeneration.from_pretrained(model_name)
 tokenizer = T5Tokenizer.from_pretrained(model_name)
-
+t5_small_model = T5ForConditionalGeneration.from_pretrained(model_name)
 
 llm_custom = PeftModel.from_pretrained(base_model, './t5-custom', lora_config=LoraConfig(
     r=8,
@@ -87,7 +88,15 @@ def optimize_with_t5(query: str) -> str:
         outputs = llm_custom.generate(input_ids=input_ids, max_length=128)
     return tokenizer.decode(outputs[0], skip_special_tokens=True)
 
+def optimize_with_t5_small(query: str) -> str:
+    input_ids = tokenizer(f"optimize {query}", return_tensors="pt").input_ids
+    with torch.no_grad():
+        outputs = t5_small_model.generate(input_ids=input_ids, max_length=128)
+    return tokenizer.decode(outputs[0], skip_special_tokens=True)
+
 t5_optimize_runnable = RunnableLambda(optimize_with_t5)
+
+t5_small_runnable = RunnableLambda(optimize_with_t5_small)
 
 def optimize_and_search(query: str, model: str):
     
@@ -98,8 +107,12 @@ def optimize_and_search(query: str, model: str):
         prompt_llm_chain = prompt | llm_groq
     elif model == gpt4o:
         prompt_llm_chain = prompt | llm_openai
-    else:
+    elif model == t5_custom:
         prompt_llm_chain = t5_optimize_runnable
+    elif model == t5_small:
+        prompt_llm_chain = t5_small_runnable
+    else:
+        raise ValueError("Invalid model selection")
 
     parallelChain = RunnableParallel(
         optimized_query_results = prompt_llm_chain | elasticsearch_runnable,
