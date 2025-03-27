@@ -36,4 +36,4 @@ EXPOSE 8000
 
 # Command to run your FastAPI app with uvicorn
 #CMD ["poetry", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
-CMD ["wait-for-it.sh", "elasticsearch:9200", "--", "poetry", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+CMD ["wait-for-it.sh", "elasticsearch:9200", "--", "poetry", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
